@@ -17,6 +17,13 @@ func main() {
 	}
 }
 ```
+```mjs
+function f1(){
+    console.log(this); // returns `window` object
+}
+console.log(this); // returns {}
+f1();
+```
 
 `range` behaves differently with slice and with channel.
 When it comes to slice, `range` actually runs only once to iterate the entire slice once.
