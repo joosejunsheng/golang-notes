@@ -4,9 +4,9 @@
 ```mjs
 func main(){
 
-	ch1 := make(chan int)
+ch1 := make(chan int)
 
-	go func() {
+    go func() {
 		for i := 0; i < 100; i++ {
 			ch1 <- i
 		}
