@@ -18,11 +18,19 @@ func main() {
 }
 ```
 ```mjs
-function f1(){
-    console.log(this); // returns `window` object
+func main() {
+	ch1 := make(chan int)
+
+	go func() {
+		for i := 0; i < 100; i++ {
+			ch1 <- i
+		}
+	}
+
+	for n := range ch1 {
+		fmt.Printf("n = %d\n", n)
+	}
 }
-console.log(this); // returns {}
-f1();
 ```
 
 `range` behaves differently with slice and with channel.
