@@ -3,11 +3,10 @@
 ## Channels
 ```mjs
 func main() {
-
 	ch1 := make(chan int)
 
 	go func() {
-    for i := 0; i < 100; i++ {
+		for i := 0; i < 100; i++ {
 			ch1 <- i
 		}
 	}()
@@ -16,6 +15,7 @@ func main() {
 		fmt.Printf("n = %d\n", n)
 	}
 }
+
 ```
 
 `range` behaves differently with slice and with channel.
@@ -31,10 +31,10 @@ func main() {
 	ch1 := make(chan int)
 
 	go func() {
-    for i := 0; i < 100; i++ {
+    		for i := 0; i < 100; i++ {
 			ch1 <- i
 		}
-    close(ch1) // <------ This line to fix close the channel
+    		close(ch1) // <------ This line to fix close the channel
 	}()
 	
 	for n := range ch1 {
