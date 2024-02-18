@@ -2,7 +2,7 @@
 
 ## Channels
 ```mjs
-func main() {
+func main(){
 
 	ch1 := make(chan int)
 
