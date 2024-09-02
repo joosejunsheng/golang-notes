@@ -144,4 +144,23 @@ INFINITE LOOP
 INFINITE LOOP
 ...
 ```
+## Efficiently Resizing Slice
+
+```go
+a := []int{1, 2, 3, 4, 5}
+numFree := len(a)
+fmt.Println(a) // Output: [1 2 3 4 5]
+
+copy(a, a[1:])
+fmt.Println(a) // Output: [2 3 4 5 5]
+
+res = a[:numFree-1]
+fmt.Println(res) // Output: [2 3 4 5]
+```
+
+Using `a = a[1:]` will end up printing the same output as `res = a[:numFree-]` but why the write more codes?
+
+Technically when you re-assign a slice, eg. `b = a[1:]`, `res = a[:numFree-]`, it creates a new slice by pointing to the original slice / shares the same underlying array. The memory is still allocated even if you do `b = a[1:]`, the only difference is the new slice `b = a[1:]` is an entire new slice referencing the original slice where it starts from the position 1 instead of 0, `a[0]` is still in the memory.
+
+By using `copy(a, a[1:])`, it moves the entire slice 1 position to the left. `res = a[:numFree-1]` is then executed to shorten the slice by 1, end up with a size of 4, remaining the capacity of 5. This will not leave `a[0]` "dangling" in the background like what we did using `a = a[1:]`.
 
