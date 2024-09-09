@@ -1,5 +1,10 @@
 # golang-notes
 
+
+- [Channels](#channels)
+- [Efficiently Resizing Slice](#efficiently-resizing-slice)
+ 
+
 ## Channels
 ```go
 func main(){
